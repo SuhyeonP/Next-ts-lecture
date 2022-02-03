@@ -9,15 +9,6 @@ interface IColorButtonProps {
 export const ColorPaletteStyled = styled.div`
   height: 127px;
   background-color: #222222;
-  .color-palette-title {
-    padding-left: 12px;
-    color: #777777;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 13px;
-    line-height: 15px;
-    margin-bottom: 20px;
-  }
   
   .color-palette-color-wrapper {
     width: 196px;
@@ -26,6 +17,16 @@ export const ColorPaletteStyled = styled.div`
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     row-gap: 12px;
   }
+`;
+
+export const ColorPaletteTitle = styled.p`
+  padding-left: 12px;
+  color: #777777;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 15px;
+  margin-bottom: 20px;
 `;
 
 export const ColorButton = styled.button<IColorButtonProps>(({

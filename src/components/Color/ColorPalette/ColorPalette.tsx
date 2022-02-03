@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorButton, ColorPaletteStyled } from './styles';
+import { ColorButton, ColorPaletteStyled, ColorPaletteTitle } from './styles';
 
 interface IPaletteProps {
   subTitle: string;
@@ -13,7 +13,7 @@ const ColorPalette = ({
   subTitle, colors, highlightColor, changeHighLights,
 }: IPaletteProps): JSX.Element => (
   <ColorPaletteStyled>
-    <p className='color-palette-title'>{subTitle}</p>
+    <ColorPaletteTitle>{subTitle}</ColorPaletteTitle>
     <div className='color-palette-color-wrapper'>
       {colors.map((color: string) => (
         <ColorButton

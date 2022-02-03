@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import SubPanelHeader from '@/components/subPanel/SubPanelHeader';
 import ColorPalette from '@/components/Color/ColorPalette/ColorPalette';
 import { HexColorPicker } from 'react-colorful';
+import { ColorPaletteTitle } from '@/components/Color/ColorPalette/styles';
 import { HeaderColorWrapperStyled } from './styles';
 
 export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00DE62',
@@ -36,7 +37,8 @@ const HeaderColor = (): JSX.Element => {
           changeHighLights={changeHighlightColors}
         />
       </div>
-      <div>
+      <div style={{ backgroundColor: '#222222' }}>
+        <ColorPaletteTitle>More Colors</ColorPaletteTitle>
         <HexColorPicker color={highlight} onChange={setHighlight} />
       </div>
     </HeaderColorWrapperStyled>
