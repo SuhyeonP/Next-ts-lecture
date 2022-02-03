@@ -2,12 +2,12 @@ import Head from 'next/head';
 import React, { ReactNode } from 'react';
 import { Container } from './styles';
 
-interface Props {
+export interface ILayoutProps {
   children?: ReactNode;
   title: string;
 }
 
-const DefaultLayout = ({ children, title }: Props): JSX.Element => (
+const DefaultLayout = ({ children, title }: ILayoutProps): JSX.Element => (
   <>
     <Head>
       <title>{title}</title>
