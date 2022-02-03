@@ -1,9 +1,10 @@
 import type { NextPage } from 'next';
+import DefaultLayout from '@/layouts/DefaultLayout';
 
 const Home: NextPage = (): JSX.Element => (
-  <div>
-    initial
-  </div>
+  <DefaultLayout title='main'>
+    <div>initial</div>
+  </DefaultLayout>
 );
 
 export default Home;
