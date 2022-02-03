@@ -52,6 +52,7 @@ export const ColorButton = styled.button<IColorButtonProps>(({
 
   return css`
     ${customCss};
+    border: 1.3px solid #777;
     background-color: ${color};
   `;
 });

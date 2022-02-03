@@ -6,6 +6,8 @@ import { HeaderColorWrapperStyled } from './styles';
 export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00DE62',
   '#00E3FF', '#0093FF', '#0030CC', '#6C00FF', '#FF00C3'];
 
+export const recentPaletteColors = new Array(10).fill('inherit');
+
 const HeaderColor = (): JSX.Element => {
   const [highlight, setHighlight] = useState('');
 
@@ -21,6 +23,14 @@ const HeaderColor = (): JSX.Element => {
         <ColorPalette
           subTitle='Recommended Color'
           colors={linkPaletteColors}
+          highlightColor={highlight}
+          changeHighLights={changeHighlightColors}
+        />
+      </div>
+      <div className='recent-color'>
+        <ColorPalette
+          subTitle='Recent Color'
+          colors={recentPaletteColors}
           highlightColor={highlight}
           changeHighLights={changeHighlightColors}
         />
