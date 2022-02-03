@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import SubPanelHeader from '@/components/subPanel/SubPanelHeader';
 import ColorPalette from '@/components/Color/ColorPalette/ColorPalette';
+import { HexColorPicker } from 'react-colorful';
 import { HeaderColorWrapperStyled } from './styles';
 
 export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00DE62',
@@ -9,7 +10,7 @@ export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00D
 export const recentPaletteColors = new Array(10).fill('inherit');
 
 const HeaderColor = (): JSX.Element => {
-  const [highlight, setHighlight] = useState('');
+  const [highlight, setHighlight] = useState('#FF00C3');
 
   const changeHighlightColors = useCallback((color: string) => {
     setHighlight(color);
@@ -34,6 +35,9 @@ const HeaderColor = (): JSX.Element => {
           highlightColor={highlight}
           changeHighLights={changeHighlightColors}
         />
+      </div>
+      <div>
+        <HexColorPicker color={highlight} onChange={setHighlight} />
       </div>
     </HeaderColorWrapperStyled>
   );

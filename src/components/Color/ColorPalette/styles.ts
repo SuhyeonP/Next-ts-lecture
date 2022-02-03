@@ -35,24 +35,58 @@ export const ColorButton = styled.button<IColorButtonProps>(({
     width: 30px;
     height: 30px;
     border-radius: 20px;
+    box-sizing: border-box;
   `;
   if (color === 'none') {
     return css`
       ${customCss};
       background-color: inherit;
-      border: 1.3px solid #777;
+      position: relative;
+      border: 1px solid #777;
+
+      &::before {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        content: "";
+        width: 30px;
+        height: 1px;
+        background: #777;
+        transform: translate(-50%,-50%) rotate(-45deg);
+      }
+    `;
+  }
+  if (color === 'inherit') {
+    return css`
+      ${customCss};
+      background-color: inherit;
+      border: 1px solid #777;
     `;
   }
 
+  let highlightCss;
   if (highlight) {
-    return css`
-      ${customCss};
+    highlightCss = css`
+      position: relative;
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        width: 33px;
+        height: 33px;
+        border-radius: 20px;
+        border: 1px solid pink;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
     `;
   }
 
   return css`
     ${customCss};
-    border: 1.3px solid #777;
+    ${highlightCss};
     background-color: ${color};
   `;
 });
