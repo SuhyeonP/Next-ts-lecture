@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { ColorButton, ColorPaletteStyled, ColorPaletteTitle } from './styles';
 
 interface IPaletteProps {
