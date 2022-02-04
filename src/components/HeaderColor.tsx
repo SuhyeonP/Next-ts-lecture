@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { memo, useCallback, useMemo, useState } from 'react';
 import SubPanelHeader from '@/components/subPanel/SubPanelHeader';
 import ColorPalette from '@/components/Color/ColorPalette/ColorPalette';
 import { HexColorPicker } from 'react-colorful';
@@ -12,27 +12,38 @@ export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00D
 const HeaderColor = (): JSX.Element => {
   const [highlight, onChangeHighLights, setHighlight] = useInput('');
   const [pickColors, setPickColors] = useState<string[]>(new Array(10).fill('inherit'));
+  const [flag, setFlag] = useState(false)
 
   const changeHighlightColors = useCallback((color: string) => {
     setHighlight(color);
   }, []);
 
-  useMemo(()=>{
-    const findIndex = pickColors.indexOf(highlight);
-    if (findIndex !== -1) {
-      setPickColors(prev => {
-        prev.splice(findIndex, 1);
-        prev.unshift(highlight);
-        return prev;
-      })
-    } else {
-      setPickColors(prev => {
-        prev.pop();
-        prev.unshift(highlight);
-        return prev;
-      })
+   useMemo(()=>{
+    if(flag) {
+      const findIndex = pickColors.indexOf(highlight);
+      // if (findIndex !== -1) {
+      //   setPickColors(prev => {
+      //     prev.splice(findIndex, 1);
+      //     prev.unshift(highlight);
+      //     return prev;
+      //   })
+      // } else {
+      //   setPickColors(prev => {
+      //     prev.pop();
+      //     prev.unshift(highlight);
+      //     return prev;
+      //   })
+      // }
+      if (findIndex === -1) {
+        setPickColors(prev => {
+          prev.pop();
+          prev.unshift(highlight);
+          return prev;
+        })
+      }
     }
-  },[highlight, pickColors])
+  },[flag, highlight]);
+
 
   return (
     <HeaderColorWrapperStyled>
@@ -57,10 +68,10 @@ const HeaderColor = (): JSX.Element => {
       <div style={{ backgroundColor: '#222222' }}>
         <ColorPaletteTitle>More Colors</ColorPaletteTitle>
         <input type='text' onChange={onChangeHighLights} value={highlight} />
-        <HexColorPicker color={highlight} onChange={setHighlight} />
+        <HexColorPicker color={highlight} onChange={setHighlight} onClickCapture={() => setFlag(true)} onMouseDown={() => setFlag(false)}/>
       </div>
     </HeaderColorWrapperStyled>
   );
 };
 
-export default HeaderColor;
+export default memo(HeaderColor);
