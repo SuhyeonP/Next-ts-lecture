@@ -30,13 +30,14 @@ export const ColorPaletteTitle = styled.p`
 `;
 
 export const ColorButton = styled.button<IColorButtonProps>(({
-  color, highlight,
+  color, highlight
 }) => {
   const customCss = css`
     width: 30px;
     height: 30px;
     border-radius: 20px;
     box-sizing: border-box;
+    cursor: ${color === 'inherit' ? 'not-allowed': 'pointer'};
   `;
   if (color === 'none') {
     return css`
