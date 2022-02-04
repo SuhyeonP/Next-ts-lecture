@@ -1,5 +1,6 @@
 import React from 'react';
 import { ColorButton, ColorPaletteStyled, ColorPaletteTitle } from './styles';
+import { linkPaletteColors } from '@/components/HeaderColor';
 
 interface IPaletteProps {
   subTitle: string;
@@ -21,7 +22,7 @@ const ColorPalette = ({
           <ColorButton
             key={color + ind}
             color={color}
-            highlight={subTitle !== 'Recent Color' && highlightColor === color}
+            highlight={!(subTitle === 'Recent Color' && linkPaletteColors.indexOf(highlightColor) !== -1) && highlightColor === color}
             disabled={color === 'inherit'}
             onClick={(): void => changeHighLights(color)}
           />
