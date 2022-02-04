@@ -15,9 +15,9 @@ const ColorPalette = ({
   <ColorPaletteStyled>
     <ColorPaletteTitle>{subTitle}</ColorPaletteTitle>
     <div className='color-palette-color-wrapper'>
-      {colors.map((color: string) => (
+      {colors.map((color: string, ind) => (
         <ColorButton
-          key={color}
+          key={color + ind}
           color={color}
           highlight={highlightColor === color}
           onClick={(): void => changeHighLights(color)}

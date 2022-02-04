@@ -10,7 +10,7 @@ export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00D
   '#00E3FF', '#0093FF', '#0030CC', '#6C00FF', '#FF00C3'];
 
 const HeaderColor = (): JSX.Element => {
-  const [highlight, onChangeHighLights, setHighlight] = useInput('#FF00C3');
+  const [highlight, onChangeHighLights, setHighlight] = useInput('');
   const [pickColors, setPickColors] = useState<string[]>(new Array(10).fill('inherit'));
 
   const changeHighlightColors = useCallback((color: string) => {
