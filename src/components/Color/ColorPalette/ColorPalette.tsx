@@ -21,7 +21,7 @@ const ColorPalette = ({
           <ColorButton
             key={color + ind}
             color={color}
-            highlight={highlightColor === color}
+            highlight={subTitle !== 'Recent Color' && highlightColor === color}
             disabled={color === 'inherit'}
             onClick={(): void => changeHighLights(color)}
           />

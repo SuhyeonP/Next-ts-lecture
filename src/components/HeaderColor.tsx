@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import SubPanelHeader from '@/components/subPanel/SubPanelHeader';
 import ColorPalette from '@/components/Color/ColorPalette/ColorPalette';
 import { HexColorPicker } from 'react-colorful';
@@ -17,11 +17,22 @@ const HeaderColor = (): JSX.Element => {
     setHighlight(color);
   }, []);
 
-  useEffect(() => {
-    if (highlight) {
-      //
+  useMemo(()=>{
+    const findIndex = pickColors.indexOf(highlight);
+    if (findIndex !== -1) {
+      setPickColors(prev => {
+        prev.splice(findIndex, 1);
+        prev.unshift(highlight);
+        return prev;
+      })
+    } else {
+      setPickColors(prev => {
+        prev.pop();
+        prev.unshift(highlight);
+        return prev;
+      })
     }
-  }, [highlight]);
+  },[highlight, pickColors])
 
   return (
     <HeaderColorWrapperStyled>
