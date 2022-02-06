@@ -1,14 +1,14 @@
 import React, {
   memo,
   useCallback, useMemo,
-  useState
+  useState,
 } from 'react';
 import SubPanelHeader from '@/components/subPanel/SubPanelHeader';
 import ColorPalette from '@/components/Color/ColorPalette/ColorPalette';
 import { ColorPaletteTitle } from '@/components/Color/ColorPalette/styles';
-import { HeaderColorWrapperStyled } from './styles';
 import DebounceHexColor from '@/components/Color/DebounceHexColor/DebounceHexColor';
 import { HexColorInput } from 'react-colorful';
+import { HeaderColorWrapperStyled } from './styles';
 
 export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00DE62',
   '#00E3FF', '#0093FF', '#0030CC', '#6C00FF', '#FF00C3'];
@@ -23,15 +23,15 @@ const HeaderColor = (): JSX.Element => {
 
   useMemo(() => {
     console.log(highlight);
-     const findIndex = pickColors.indexOf(highlight);
-     if (findIndex === -1) {
-       setPickColors(prev => {
-         prev.pop();
-         prev.unshift(highlight);
-         return prev;
-       })
-     }
-   }, [highlight])
+    const findIndex = pickColors.indexOf(highlight);
+    if (findIndex === -1) {
+      setPickColors((prev) => {
+        prev.pop();
+        prev.unshift(highlight);
+        return prev;
+      });
+    }
+  }, [highlight]);
 
   return (
     <HeaderColorWrapperStyled>
