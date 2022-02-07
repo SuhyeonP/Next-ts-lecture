@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import SubPanelHeader from '@/components/subPanel/SubPanelHeader';
 import ColorPalette from '@/components/Color/ColorPalette/ColorPalette';
-import { ColorPaletteTitle } from '@/components/Color/ColorPalette/styles';
+import { ColorPaletteTitle, ColorPickerSelection } from '@/components/Color/ColorPalette/styles';
 import DebounceHexColor from '@/components/Color/DebounceHexColor/DebounceHexColor';
 import { HexColorInput } from 'react-colorful';
 import { HeaderColorWrapperStyled } from './styles';
@@ -55,11 +55,14 @@ const HeaderColor = (): JSX.Element => {
       </div>
       <div style={{ backgroundColor: '#222222' }}>
         <ColorPaletteTitle>More Colors</ColorPaletteTitle>
-        <HexColorInput
-          color={highlight}
-          onChange={setHighlight}
-          className='custom-input'
-        />
+        <div className='color-picker-selection-info'>
+          <ColorPickerSelection color={highlight} />
+          <HexColorInput
+            color={highlight}
+            onChange={setHighlight}
+            className='custom-input'
+          />
+        </div>
         <DebounceHexColor
           onChange={setHighlight}
           color={highlight}

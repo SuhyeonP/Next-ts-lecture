@@ -29,15 +29,29 @@ export const ColorPaletteTitle = styled.p`
   margin-bottom: 20px;
 `;
 
+interface IColorSelection {
+  color: string;
+}
+
+export const ColorPickerSelection = styled.p<IColorSelection>(({
+  color,
+}) => css`
+  width: 15px;
+  height: 15px;
+  background-color: ${color};
+  border-radius: 3px;
+  margin:0 15px;
+`);
+
 export const ColorButton = styled.button<IColorButtonProps>(({
-  color, highlight
+  color, highlight,
 }) => {
   const customCss = css`
     width: 30px;
     height: 30px;
     border-radius: 20px;
     box-sizing: border-box;
-    cursor: ${color === 'inherit' ? 'not-allowed': 'pointer'};
+    cursor: ${color === 'inherit' ? 'not-allowed' : 'pointer'};
   `;
   if (color === 'none') {
     return css`

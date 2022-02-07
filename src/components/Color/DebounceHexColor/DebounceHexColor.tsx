@@ -7,7 +7,7 @@ interface Props {
   onChange: any;
 }
 
-const DebounceHexColor = ({color, onChange}: Props): JSX.Element => {
+const DebounceHexColor = ({ color, onChange }: Props): JSX.Element => {
   const [value, setValue] = useState(color);
 
   useDebouncy(() => onChange(value), 200, [value]);
@@ -16,8 +16,9 @@ const DebounceHexColor = ({color, onChange}: Props): JSX.Element => {
     <HexColorPicker
       color={value}
       onChange={setValue}
+      className='color-picker-link'
     />
-  )
-}
+  );
+};
 
 export default DebounceHexColor;
