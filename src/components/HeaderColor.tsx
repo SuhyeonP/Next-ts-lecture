@@ -14,17 +14,19 @@ export const linkPaletteColors = ['none', '#FF004F', '#FF8200', '#FAFF00', '#00D
   '#00E3FF', '#0093FF', '#0030CC', '#6C00FF', '#FF00C3'];
 
 const HeaderColor = (): JSX.Element => {
-  const [highlight, setHighlight] = useState('#ffffff');
+  const [highlight, setHighlight] = useState('');
   const [pickColors, setPickColors] = useState<string[]>(new Array(10).fill('inherit'));
 
   const changeHighlightColors = useCallback((color: string) => {
-    setHighlight(color);
+    if (['inherit', ''].indexOf(color) === -1) {
+      setHighlight(color);
+    }
   }, [highlight]);
 
   useMemo(() => {
     const findIndex = pickColors.indexOf(highlight);
     const findIndexOnRecommend = linkPaletteColors.indexOf(highlight);
-    if (findIndex === -1 && findIndexOnRecommend === -1) {
+    if (findIndex === -1 && findIndexOnRecommend === -1 && ['inherit', 'none', ''].indexOf(highlight) === -1) {
       setPickColors((prev) => {
         prev.pop();
         prev.unshift(highlight);

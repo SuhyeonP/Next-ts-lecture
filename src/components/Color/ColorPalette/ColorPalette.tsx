@@ -1,6 +1,6 @@
 import React from 'react';
-import { ColorButton, ColorPaletteStyled, ColorPaletteTitle } from './styles';
 import { linkPaletteColors } from '@/components/HeaderColor';
+import { ColorButton, ColorPaletteStyled, ColorPaletteTitle } from './styles';
 
 interface IPaletteProps {
   subTitle: string;
@@ -12,24 +12,21 @@ interface IPaletteProps {
 
 const ColorPalette = ({
   subTitle, colors, highlightColor, changeHighLights,
-}: IPaletteProps): JSX.Element => {
-
-  return (
-    <ColorPaletteStyled>
-      <ColorPaletteTitle>{subTitle}</ColorPaletteTitle>
-      <div className='color-palette-color-wrapper'>
-        {colors.map((color: string, ind) => (
-          <ColorButton
-            key={color + ind}
-            color={color}
-            highlight={!(subTitle === 'Recent Color' && linkPaletteColors.indexOf(highlightColor) !== -1) && highlightColor === color}
-            disabled={color === 'inherit'}
-            onClick={(): void => changeHighLights(color)}
-          />
-        ))}
-      </div>
-    </ColorPaletteStyled>
-  );
-};
+}: IPaletteProps): JSX.Element => (
+  <ColorPaletteStyled>
+    <ColorPaletteTitle>{subTitle}</ColorPaletteTitle>
+    <div className='color-palette-color-wrapper'>
+      {colors.map((color: string, ind) => (
+        <ColorButton
+          key={color + ind.toString()}
+          color={color}
+          highlight={!(subTitle === 'Recent Color' && linkPaletteColors.indexOf(highlightColor) !== -1) && highlightColor === color}
+          disabled={color === 'inherit'}
+          onClick={(): void => changeHighLights(color)}
+        />
+      ))}
+    </div>
+  </ColorPaletteStyled>
+);
 
 export default ColorPalette;

@@ -53,9 +53,29 @@ export const ColorButton = styled.button<IColorButtonProps>(({
     box-sizing: border-box;
     cursor: ${color === 'inherit' ? 'not-allowed' : 'pointer'};
   `;
+
+  let highlightCss;
+  if (highlight) {
+    highlightCss = css`
+      position: relative;
+      &::after {
+        display: block;
+        content: '';
+        position: absolute;
+        width: 33px;
+        height: 33px;
+        border-radius: 20px;
+        border: 1px solid pink;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    `;
+  }
   if (color === 'none') {
     return css`
       ${customCss};
+      ${highlightCss};
       background-color: inherit;
       position: relative;
       border: 1px solid #777;
@@ -78,25 +98,6 @@ export const ColorButton = styled.button<IColorButtonProps>(({
       ${customCss};
       background-color: inherit;
       border: 1px solid #777;
-    `;
-  }
-
-  let highlightCss;
-  if (highlight) {
-    highlightCss = css`
-      position: relative;
-      &::after {
-        display: block;
-        content: '';
-        position: absolute;
-        width: 33px;
-        height: 33px;
-        border-radius: 20px;
-        border: 1px solid pink;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
     `;
   }
 
