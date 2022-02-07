@@ -22,9 +22,9 @@ const HeaderColor = (): JSX.Element => {
   }, [highlight]);
 
   useMemo(() => {
-    console.log(highlight);
     const findIndex = pickColors.indexOf(highlight);
-    if (findIndex === -1) {
+    const findIndexOnRecommend = linkPaletteColors.indexOf(highlight);
+    if (findIndex === -1 && findIndexOnRecommend === -1) {
       setPickColors((prev) => {
         prev.pop();
         prev.unshift(highlight);
