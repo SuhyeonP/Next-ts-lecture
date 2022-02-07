@@ -60,7 +60,7 @@ const HeaderColor = (): JSX.Element => {
         <div className='color-picker-selection-info'>
           <ColorPickerSelection color={highlight} />
           <HexColorInput
-            color={highlight}
+            color={highlight === 'none' ? 'none' : highlight}
             onChange={setHighlight}
             className='custom-input'
           />
